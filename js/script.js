@@ -150,12 +150,7 @@ if (
     sessionStorage.setItem("activeInstructionId", "t8");
     sessionStorage.setItem("activePackageCode", packageCode);
 
-    packageCodeDialog.close();
-
-    console.log("Instruction started", {
-      instructionId: "t8",
-      packageCode,
-    });
+    window.location.href = "instruction.html";      
   });
 }
 

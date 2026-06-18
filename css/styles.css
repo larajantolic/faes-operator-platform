@@ -1364,3 +1364,22 @@ body.instruction-page {
 .instruction-warning[hidden] {
   display: none;
 }
+
+.instruction-navigation-button--finish {
+  width: auto;
+  min-width: 118px;
+  padding: 0 22px;
+
+  border-color: #24272b;
+  border-radius: 999px;
+
+  background-color: #24272b;
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.instruction-navigation-button[hidden] {
+  display: none;
+}
