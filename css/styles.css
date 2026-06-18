@@ -533,3 +533,199 @@ svg {
 .instruction-card[hidden] {
   display: none;
 }
+
+
+.instruction-card--button {
+  width: 100%;
+  padding: 0;
+
+  color: inherit;
+  text-align: left;
+  font: inherit;
+
+  cursor: pointer;
+}
+
+.instruction-card--button:hover {
+  border-color: #cdd3d9;
+  box-shadow: 0 8px 20px rgba(26, 36, 46, 0.08);
+}
+
+.instruction-dialog {
+  width: min(760px, calc(100vw - 40px));
+  max-height: calc(100vh - 40px);
+
+  margin: auto;
+  padding: 0;
+
+  overflow: auto;
+
+  border: 0;
+  border-radius: 12px;
+
+  background-color: var(--surface);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.instruction-dialog::backdrop {
+  background-color: rgba(19, 22, 26, 0.76);
+}
+
+.instruction-preview-dialog__content {
+  padding: 30px 42px 34px;
+}
+
+.instruction-preview-dialog__image {
+  height: 250px;
+
+  display: grid;
+  place-items: center;
+}
+
+.instruction-preview-dialog__image img {
+  display: block;
+
+  max-width: 68%;
+  max-height: 90%;
+
+  object-fit: contain;
+}
+
+.dialog-divider {
+  height: 1px;
+  background-color: var(--border);
+}
+
+.instruction-preview-dialog__details {
+  padding: 22px 0;
+}
+
+.instruction-preview-dialog__details h2 {
+  margin-bottom: 4px;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.instruction-preview-dialog__description {
+  margin-bottom: 12px;
+
+  font-size: 16px;
+  font-style: italic;
+}
+
+.instruction-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.instruction-meta span {
+  padding: 6px 10px;
+
+  border-radius: 7px;
+  background-color: #dfe2e5;
+
+  font-size: 14px;
+  line-height: 1;
+}
+
+.dialog-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+
+  padding-top: 22px;
+}
+
+.dialog-button {
+  min-height: 52px;
+
+  border-radius: 7px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.dialog-button--secondary {
+  border: 1px solid #202326;
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+
+.dialog-button--primary {
+  border: 1px solid var(--accent);
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.package-code-dialog {
+  width: min(724px, calc(100vw - 40px));
+}
+
+.package-code-dialog__content {
+  padding: 36px 42px 34px;
+}
+
+.package-code-dialog__content h2 {
+  margin-bottom: 22px;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.package-code-field {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.package-code-field input {
+  width: 100%;
+  height: 54px;
+
+  padding: 0 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+
+  background-color: #f7f8f9;
+  color: var(--text-primary);
+
+  font-size: 16px;
+}
+
+.package-code-field input:focus {
+  border-color: var(--accent);
+  background-color: var(--surface);
+}
+
+.package-code-error {
+  margin: -14px 0 20px;
+
+  color: #c73b2f;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .instruction-preview-dialog__content,
+  .package-code-dialog__content {
+    padding: 28px 22px;
+  }
+
+  .instruction-preview-dialog__image {
+    height: 240px;
+  }
+
+  .dialog-actions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .dialog-button {
+    min-height: 54px;
+  }
+}

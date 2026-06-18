@@ -54,3 +54,113 @@ if (instructionSearchInput) {
     filterInstructions(event.target.value);
   });
 }
+
+const t8InstructionCard = document.querySelector(
+  '[data-open-modal="instruction-preview"]'
+);
+
+const instructionPreviewDialog = document.querySelector(
+  "#instruction-preview-dialog"
+);
+
+const packageCodeDialog = document.querySelector("#package-code-dialog");
+
+const closePreviewButton = document.querySelector("#close-preview-button");
+const startInstructionButton = document.querySelector(
+  "#start-instruction-button"
+);
+
+const cancelPackageCodeButton = document.querySelector(
+  "#cancel-package-code-button"
+);
+
+const confirmPackageCodeButton = document.querySelector(
+  "#confirm-package-code-button"
+);
+
+const packageCodeInput = document.querySelector("#package-code-input");
+const packageCodeError = document.querySelector("#package-code-error");
+
+function closeDialogWhenBackdropIsClicked(dialog) {
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+}
+
+if (instructionPreviewDialog) {
+  closeDialogWhenBackdropIsClicked(instructionPreviewDialog);
+}
+
+if (packageCodeDialog) {
+  closeDialogWhenBackdropIsClicked(packageCodeDialog);
+}
+
+if (t8InstructionCard && instructionPreviewDialog) {
+  t8InstructionCard.addEventListener("click", () => {
+    instructionPreviewDialog.showModal();
+  });
+}
+
+if (closePreviewButton && instructionPreviewDialog) {
+  closePreviewButton.addEventListener("click", () => {
+    instructionPreviewDialog.close();
+  });
+}
+
+if (
+  startInstructionButton &&
+  instructionPreviewDialog &&
+  packageCodeDialog &&
+  packageCodeInput
+) {
+  startInstructionButton.addEventListener("click", () => {
+    instructionPreviewDialog.close();
+
+    packageCodeInput.value = "";
+    packageCodeError.hidden = true;
+
+    packageCodeDialog.showModal();
+    packageCodeInput.focus();
+  });
+}
+
+if (cancelPackageCodeButton && packageCodeDialog) {
+  cancelPackageCodeButton.addEventListener("click", () => {
+    packageCodeDialog.close();
+  });
+}
+
+if (
+  confirmPackageCodeButton &&
+  packageCodeDialog &&
+  packageCodeInput &&
+  packageCodeError
+) {
+  confirmPackageCodeButton.addEventListener("click", () => {
+    const packageCode = packageCodeInput.value.trim();
+
+    if (!packageCode) {
+      packageCodeError.hidden = false;
+      packageCodeInput.focus();
+      return;
+    }
+
+    sessionStorage.setItem("activeInstructionId", "t8");
+    sessionStorage.setItem("activePackageCode", packageCode);
+
+    packageCodeDialog.close();
+
+    console.log("Instruction started", {
+      instructionId: "t8",
+      packageCode,
+    });
+  });
+}
+
+if (packageCodeInput && packageCodeError) {
+  packageCodeInput.addEventListener("input", () => {
+    packageCodeError.hidden = true;
+  });
+}
