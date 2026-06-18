@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>T-8 Repair Triage | FAES Operator Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="instruction-page">
+  <div class="instruction-app">
+
+    <div class="instruction-fixed-header">
+      <header class="instruction-topbar">
+        <button
+          class="back-to-library-button"
+          id="back-to-library-button"
+          type="button"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 6L8 12L14 18"></path>
+            <path d="M9 12H20"></path>
+          </svg>
+
+          <span>Instruction Library</span>
+        </button>
+
+        <button
+          class="report-step-issue-button"
+          id="report-step-issue-button"
+          type="button"
+          aria-label="Report step issue"
+        >
+          <span class="report-step-issue-button__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 3V21"></path>
+              <path d="M6 4H17L15 9L19 14H6"></path>
+            </svg>
+          </span>
+
+          <span>Report step<br>issue</span>
+        </button>
+      </header>
+
+      <section class="instruction-heading">
+        <div class="instruction-heading__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 3H14L19 8V20C19 20.55 18.55 21 18 21H7C6.45 21 6 20.55 6 20V4C6 3.45 6.45 3 7 3Z"></path>
+            <path d="M14 3V8H19"></path>
+            <path d="M9 12H16"></path>
+            <path d="M9 16H16"></path>
+          </svg>
+        </div>
+
+        <div>
+          <h1>T-8 Repair Triage</h1>
+          <p id="instruction-step-label">Step 1 of 27</p>
+        </div>
+      </section>
+
+      <div class="instruction-page-divider"></div>
+    </div>
+
+    <main class="instruction-main-content">
+      <h2 class="instruction-step-title" id="instruction-step-title"></h2>
+
+      <section
+        class="instruction-step-layout instruction-step-layout--no-images"
+        id="instruction-step-layout"
+      >
+        <div
+          class="instruction-warning"
+          id="instruction-warning"
+          hidden
+        ></div>
+
+        <div class="instruction-step-primary">
+          <article class="instruction-panel instruction-panel--instruction">
+            <h3>Instruction</h3>
+
+            <p id="instruction-text"></p>
+          </article>
+
+          <article class="instruction-panel instruction-panel--checks">
+            <h3>Checks</h3>
+
+            <div
+              class="instruction-check-list"
+              id="instruction-check-list"
+            ></div>
+          </article>
+        </div>
+
+        <aside
+          class="instruction-image-panel"
+          id="instruction-image-panel"
+          hidden
+        >
+          <h3>Reference images</h3>
+
+          <div
+            class="instruction-image-list"
+            id="instruction-image-list"
+          ></div>
+        </aside>
+      </section>
+    </main>
+
+    <nav
+      class="instruction-step-navigation"
+      aria-label="Instruction navigation"
+    >
+      <button
+        class="instruction-navigation-button"
+        id="previous-step-button"
+        type="button"
+        aria-label="Previous step"
+        hidden
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15 6L9 12L15 18"></path>
+        </svg>
+      </button>
+
+      <span class="instruction-step-counter" id="instruction-step-counter">
+        1 / 27
+      </span>
+
+      <button
+        class="instruction-navigation-button"
+        id="next-step-button"
+        type="button"
+        aria-label="Next step"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 6L15 12L9 18"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <button
+      class="document-product-button"
+      id="document-product-button"
+      type="button"
+      aria-label="Document product"
+    >
+      <span class="document-product-button__icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 8H8L10 5H14L16 8H20V19H4Z"></path>
+          <circle cx="12" cy="13" r="3.5"></circle>
+        </svg>
+      </span>
+
+      <span>Document<br>product</span>
+    </button>
+
+    <dialog
+      class="instruction-dialog leave-instruction-dialog"
+      id="leave-instruction-dialog"
+      aria-labelledby="leave-instruction-title"
+    >
+      <div class="leave-instruction-dialog__content">
+        <h2 id="leave-instruction-title">Leave instruction?</h2>
+
+        <p>
+          Your progress in this instruction will not be saved.
+        </p>
+
+        <div class="dialog-divider"></div>
+
+        <div class="dialog-actions">
+          <button
+            class="dialog-button dialog-button--secondary"
+            type="button"
+            id="stay-in-instruction-button"
+          >
+            Stay here
+          </button>
+
+          <button
+            class="dialog-button dialog-button--primary"
+            type="button"
+            id="confirm-leave-instruction-button"
+          >
+            Leave instruction
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+  </div>
+
+  <script src="js/instruction-stepper.js"></script>
+</body>
+</html>
