@@ -729,3 +729,657 @@ svg {
     min-height: 54px;
   }
 }
+
+
+
+/* ========================================
+   INSTRUCTION STEPPER PAGE
+======================================== */
+
+body.instruction-page {
+  min-height: 100vh;
+  background-color: var(--page-background);
+}
+
+.instruction-app {
+  position: relative;
+
+  min-height: 100vh;
+  padding: 28px 56px 34px;
+
+  display: flex;
+  flex-direction: column;
+}
+.instruction-fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+
+  padding: 28px 56px 0;
+
+  background-color: var(--page-background);
+}
+
+.instruction-main-content {
+  flex: 1;
+  padding: 190px 52px 120px;
+}
+
+.instruction-topbar {
+  height: 36px;
+  display: flex;
+  align-items: flex-start;
+  
+}
+
+.back-to-library-button {
+  min-height: 36px;
+  padding: 0 15px 0 10px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  border: 1px solid #d7d4cd;
+  border-radius: 999px;
+
+  background-color: #f5f2eb;
+  color: var(--text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.back-to-library-button svg {
+  width: 17px;
+  height: 17px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.report-step-issue-button {
+  position: absolute;
+  top: 28px;
+  right: 56px;
+
+  width: 84px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  border: 0;
+  background: transparent;
+  color: #969ba1;
+
+  font-size: 13px;
+  line-height: 1.15;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.report-step-issue-button__icon {
+  width: 62px;
+  height: 62px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #d7d4cd;
+  border-radius: 50%;
+
+  background-color: #f5f2eb;
+  color: #e33b3b;
+}
+
+.report-step-issue-button svg {
+  width: 26px;
+  height: 26px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.instruction-heading {
+  margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.instruction-heading__icon {
+  width: 56px;
+  height: 56px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+  background-color: #f5f2eb;
+  color: var(--accent);
+}
+
+.instruction-heading__icon svg {
+  width: 24px;
+  height: 24px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.instruction-heading h1 {
+  margin-bottom: 4px;
+
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+}
+
+.instruction-heading p {
+  color: #9aa0a6;
+  font-size: 15px;
+}
+
+.instruction-page-divider {
+  height: 1px;
+  margin-top: 18px;
+
+  background-color: var(--border);
+}
+
+.instruction-main-content {
+  flex: 1;
+  padding: 170px 52px 120px;
+}
+
+.instruction-step-title {
+  margin-bottom: 28px;
+
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.instruction-step-title span {
+  margin-right: 10px;
+}
+
+.instruction-step-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 22px 34px;
+  align-items: start;
+}
+
+.instruction-step-layout--no-images {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.instruction-step-primary {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.instruction-step-layout--no-images .instruction-step-primary {
+  grid-column: 1 / -1;
+
+  width: 100%;
+  max-width: 786px;
+}
+
+.instruction-panel {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background-color: var(--surface);
+}
+
+.instruction-panel h3,
+.instruction-image-panel h3 {
+  margin-bottom: 10px;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.instruction-panel--instruction {
+  width: 100%;
+  max-width: 780px;
+  padding: 18px 20px 20px;
+}
+
+.instruction-step-layout--no-images .instruction-panel--instruction,
+.instruction-step-layout--no-images .instruction-panel--checks {
+  max-width: none;
+}
+
+.instruction-panel--instruction p {
+  font-size: 17px;
+  line-height: 1.42;
+}
+
+.instruction-panel--checks {
+  width: 100%;
+  max-width: 500px;
+  padding: 16px 10px 12px;
+}
+
+.instruction-panel--checks h3 {
+  padding: 0 2px;
+}
+
+.instruction-check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.instruction-check {
+  width: 100%;
+  min-height: 62px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  border: 1px solid #d9dcdf;
+  border-radius: 10px;
+
+  background-color: var(--surface);
+  color: var(--text-primary);
+
+  font-size: 16px;
+  line-height: 1.3;
+  text-align: left;
+
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease,
+    color 160ms ease;
+}
+
+.instruction-check__box {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #d7d4cd;
+  border-radius: 6px;
+
+  background-color: #f5f2eb;
+  color: #ffffff;
+}
+
+.instruction-check--completed {
+  border-color: #a9e5c4;
+  background-color: #eaf8f1;
+  color: var(--text-primary);
+}
+
+.instruction-check--completed .instruction-check__box {
+  border-color: #d7d4cd;
+  background-color: #f5f2eb;
+}
+
+.instruction-check--completed .instruction-check__box::after {
+  content: "✓";
+
+  color: #24272b;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.instruction-warning {
+  grid-column: 1;
+
+  width: 100%;
+  max-width: 500px;
+  min-height: 62px;
+  padding: 14px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  border: 1px solid #f4ca63;
+  border-radius: 10px;
+
+  background-color: #fff9e8;
+  color: var(--text-primary);
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.instruction-warning__icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  color: #f8d46d;
+}
+
+.instruction-warning__icon svg {
+  width: 34px;
+  height: 34px;
+
+  fill: currentColor;
+  stroke: none;
+}
+
+.instruction-warning__icon svg path:nth-child(2) {
+  fill: none;
+  stroke: #ffffff;
+  stroke-linecap: round;
+  stroke-width: 2.2;
+}
+
+.instruction-warning__icon svg circle {
+  fill: #ffffff;
+}
+
+.instruction-warning__text {
+  max-width: 370px;
+}
+
+.instruction-image-panel {
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background-color: var(--surface);
+}
+
+.instruction-image-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.instruction-image-list img {
+  width: 100%;
+  max-height: 240px;
+
+  display: block;
+
+  border-radius: 8px;
+
+  object-fit: contain;
+  background-color: #f7f8f9;
+}
+
+.instruction-step-navigation {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  z-index: 20;
+
+  min-height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  transform: translateX(-50%);
+}
+
+.instruction-navigation-button {
+  width: 54px;
+  height: 54px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #d7d4cd;
+  border-radius: 50%;
+
+  background-color: #f5f2eb;
+  color: #777d83;
+
+  cursor: pointer;
+}
+
+.instruction-navigation-button svg {
+  width: 26px;
+  height: 26px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.instruction-step-counter {
+  min-width: 156px;
+  min-height: 54px;
+  padding: 0 22px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #d7d4cd;
+  border-radius: 999px;
+
+  background-color: #f5f2eb;
+  color: #777d83;
+
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.document-product-button {
+  position: fixed;
+  right: 56px;
+  bottom: 26px;
+  z-index: 20;
+
+  width: 98px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  border: 0;
+  background: transparent;
+  color: #969ba1;
+
+  font-size: 13px;
+  line-height: 1.15;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.document-product-button__icon {
+  width: 68px;
+  height: 68px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #83cefa;
+  border-radius: 50%;
+
+  background-color: #c8ebff;
+  color: #159de5;
+}
+
+.document-product-button svg {
+  width: 31px;
+  height: 31px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.leave-instruction-dialog {
+  width: min(580px, calc(100vw - 40px));
+}
+
+.leave-instruction-dialog__content {
+  padding: 34px 38px 32px;
+}
+
+.leave-instruction-dialog__content h2 {
+  margin-bottom: 10px;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.leave-instruction-dialog__content p {
+  margin-bottom: 28px;
+
+  color: #62676d;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.leave-instruction-dialog .dialog-actions {
+  padding-top: 22px;
+}
+
+@media (max-width: 1000px) {
+  .instruction-app {
+    padding: 30px 30px 28px;
+  }
+
+  .instruction-main-content {
+    padding: 44px 20px 26px;
+  }
+
+  .instruction-step-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .instruction-image-panel {
+    max-width: 620px;
+  }
+
+  .document-product-button {
+    right: 30px;
+    bottom: 28px;
+  }
+}
+
+@media (max-width: 650px) {
+  .instruction-app {
+    padding: 22px 18px 24px;
+  }
+
+  .instruction-heading {
+    gap: 12px;
+  }
+
+  .instruction-heading__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .instruction-heading h1 {
+    font-size: 23px;
+  }
+
+  .instruction-main-content {
+    padding: 34px 0 24px;
+  }
+
+  .instruction-step-title {
+    font-size: 25px;
+  }
+
+  .instruction-panel--instruction p,
+  .instruction-check {
+    font-size: 15px;
+  }
+
+  .instruction-step-counter {
+    min-width: 132px;
+    font-size: 18px;
+  }
+
+  .report-step-issue-button {
+    width: 68px;
+    font-size: 11px;
+  }
+
+  .report-step-issue-button__icon {
+    width: 50px;
+    height: 50px;
+  }
+
+ .document-product-button {
+  position: fixed;
+  right: 18px;
+  bottom: 16px;
+  z-index: 20;
+}
+
+  .leave-instruction-dialog__content {
+    padding: 28px 22px;
+  }
+    .instruction-step-navigation {
+    bottom: 18px;
+  }
+
+  .instruction-main-content {
+    padding-bottom: 110px;
+  }
+}
+
+.instruction-warning[hidden] {
+  display: none;
+}
+
+.instruction-navigation-button--finish {
+  width: auto;
+  min-width: 118px;
+  padding: 0 22px;
+
+  border-color: #24272b;
+  border-radius: 999px;
+
+  background-color: #24272b;
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.instruction-navigation-button[hidden] {
+  display: none;
+}
