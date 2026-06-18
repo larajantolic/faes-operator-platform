@@ -141,16 +141,20 @@
                 </div>
             </article>
 
-            <article class="instruction-card">
+            <button
+            class="instruction-card instruction-card--button"
+            type="button"
+            data-open-modal="instruction-preview"
+            >
                 <div class="instruction-card__image">
-                <img src="assets/images/t8.png" alt="T-8 repair triage component">
+                    <img src="assets/images/t8.png" alt="T-8 repair triage component">
                 </div>
 
                 <div class="instruction-card__content">
-                <h2>T-8</h2>
-                <p>FAES Repair Triage Component</p>
+                    <h2>T-8</h2>
+                    <p>FAES Repair Triage Component</p>
                 </div>
-            </article>
+            </button>
 
             <article class="instruction-card">
                 <div class="instruction-card__image">
@@ -204,6 +208,99 @@
     </div>
 
   </div>
+
+  <dialog
+  class="instruction-dialog instruction-preview-dialog"
+  id="instruction-preview-dialog"
+  aria-labelledby="instruction-preview-title"
+>
+  <div class="instruction-preview-dialog__content">
+    <div class="instruction-preview-dialog__image">
+      <img src="assets/images/t8.png" alt="T-8 repair triage component">
+    </div>
+
+    <div class="dialog-divider"></div>
+
+        <div class="instruction-preview-dialog__details">
+            <h2 id="instruction-preview-title">T-8</h2>
+            <p class="instruction-preview-dialog__description">
+                FAES Repair Triage Component
+            </p>
+
+            <div class="instruction-meta">
+                <span><strong>Duration:</strong> 15min</span>
+                <span><strong>Steps:</strong> 3</span>
+            </div>
+        </div>
+
+        <div class="dialog-divider"></div>
+
+        <div class="dialog-actions">
+            <button
+                class="dialog-button dialog-button--secondary"
+                type="button"
+                id="close-preview-button"
+            >
+                Close
+            </button>
+
+            <button
+                class="dialog-button dialog-button--primary"
+                type="button"
+                id="start-instruction-button"
+            >
+                Start
+            </button>
+        </div>
+    </div>
+</dialog>
+
+<dialog
+  class="instruction-dialog package-code-dialog"
+  id="package-code-dialog"
+  aria-labelledby="package-code-title"
+>
+    <div class="package-code-dialog__content">
+        <h2 id="package-code-title">
+        Please enter the code of the package you are working on:
+        </h2>
+
+        <label class="package-code-field">
+            <span class="visually-hidden">Package code</span>
+
+            <input
+                id="package-code-input"
+                type="text"
+                placeholder="Type..."
+                autocomplete="off"
+            >
+        </label>
+
+        <p class="package-code-error" id="package-code-error" hidden>
+        Enter a package code before continuing.
+        </p>
+
+        <div class="dialog-divider"></div>
+
+        <div class="dialog-actions">
+            <button
+                class="dialog-button dialog-button--secondary"
+                type="button"
+                id="cancel-package-code-button"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="dialog-button dialog-button--primary"
+                type="button"
+                id="confirm-package-code-button"
+            >
+                Done
+            </button>
+        </div>
+    </div>
+</dialog>
 
   <script src="js/script.js"></script>
 </body>
