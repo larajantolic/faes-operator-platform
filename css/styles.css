@@ -923,16 +923,33 @@ body.instruction-page {
 
 .instruction-step-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 500px) minmax(0, 1fr);
+  grid-template-areas:
+    "primary images";
   gap: 22px 34px;
   align-items: start;
 }
 
+.instruction-step-layout--has-warning {
+  grid-template-areas:
+    "warning images"
+    "primary images";
+}
+
 .instruction-step-layout--no-images {
   grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "primary";
+}
+
+.instruction-step-layout--no-images.instruction-step-layout--has-warning {
+  grid-template-areas:
+    "warning"
+    "primary";
 }
 
 .instruction-step-primary {
+  grid-area: primary;
   min-width: 0;
 
   display: flex;
@@ -941,7 +958,7 @@ body.instruction-page {
 }
 
 .instruction-step-layout--no-images .instruction-step-primary {
-  grid-column: 1 / -1;
+  grid-area: primary;
 
   width: 100%;
   max-width: 786px;
@@ -964,7 +981,7 @@ body.instruction-page {
 
 .instruction-panel--instruction {
   width: 100%;
-  max-width: 780px;
+  max-width: none;
   padding: 18px 20px 20px;
 }
 
@@ -980,7 +997,7 @@ body.instruction-page {
 
 .instruction-panel--checks {
   width: 100%;
-  max-width: 500px;
+  max-width: none;
   padding: 16px 10px 12px;
 }
 
@@ -1053,7 +1070,7 @@ body.instruction-page {
 }
 
 .instruction-warning {
-  grid-column: 1;
+  grid-area: warning;
 
   width: 100%;
   max-width: 500px;
@@ -1110,7 +1127,13 @@ body.instruction-page {
 }
 
 .instruction-image-panel {
-  padding: 16px;
+  grid-area: images;
+  min-width: 0;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
 
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -1119,21 +1142,107 @@ body.instruction-page {
 }
 
 .instruction-image-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  width: 100%;
+}
+.instruction-image-list--single {
+  display: block;
 }
 
-.instruction-image-list img {
+.instruction-image-list--multiple {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.instruction-image-card {
+  margin: 0;
+  min-width: 0;
+}
+
+.instruction-image-card img {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  border: 1px solid #d9dee3;
+  border-radius: 10px;
+  background-color: #ffffff;
+  object-fit: contain;
+}
+
+.instruction-image-list--single .instruction-image-card img {
+  width: 100%;
+  max-height: 520px;
+  min-height: 320px;
+}
+
+.instruction-image-list--multiple .instruction-image-card img {
   width: 100%;
   max-height: 240px;
+  min-height: 180px;
+}
+
+.instruction-image-card figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #3f4449;
+  line-height: 1.2;
+}
+.instruction-image-list--multiple
+  .instruction-image-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+.instruction-image-card {
+  min-width: 0;
+  margin: 0;
+}
+
+.instruction-image-card img {
+  width: 100%;
+  min-height: 220px;
+  max-height: 340px;
 
   display: block;
 
-  border-radius: 8px;
+  padding: 12px;
+
+  border: 1px solid #d9dee3;
+  border-radius: 10px;
+
+  background-color: #ffffff;
 
   object-fit: contain;
-  background-color: #f7f8f9;
+}
+
+.instruction-image-card figcaption {
+  margin-top: 10px;
+
+  color: #3f4449;
+
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.instruction-image-list--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.instruction-image-list--single .instruction-image-card img {
+  min-height: 360px;
+  max-height: 520px;
+}
+
+/* One reference image: show it large and centred */
+.instruction-image-list:has(img:only-child) {
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+}
+
+.instruction-image-list:has(img:only-child) img {
+  height: clamp(340px, 48vh, 520px);
+  max-height: none;
+
+  object-fit: contain;
 }
 
 .instruction-step-navigation {
@@ -1381,5 +1490,12 @@ body.instruction-page {
 }
 
 .instruction-navigation-button[hidden] {
+  display: none;
+}
+
+.instruction-image-panel[hidden] {
+  display: none;
+}
+.instruction-image-panel h3 {
   display: none;
 }
