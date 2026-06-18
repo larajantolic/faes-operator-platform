@@ -4,10 +4,13 @@ const t8Steps = [
     instruction:
       "Check the T-8 for two triangle markings. If the markings are present, continue with this instruction. If the markings are not present, use the T-28 manual instead.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-01-reference-01.png",
+    alt: "Reference image showing the triangle markings used to verify the correct T-8 setup"
+  }],
     checks: [
       "Two triangle markings are present",
-      "All required items are present"
+
     ]
   },
   {
@@ -28,7 +31,10 @@ const t8Steps = [
     instruction:
       "Take photos of the complete T-8 setup. Make sure the SA, SA lid, TA, optional CA and T-8 tool are visible. Use multiple photos if needed.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-03-reference-01.png",
+    alt: "Reference image showing the complete T-8 setup to photograph"
+  }],
     checks: [
       "Photos of all required items have been taken"
     ]
@@ -38,7 +44,10 @@ const t8Steps = [
     instruction:
       "Check whether a FAES RTM label is present. If it is missing, place a new label on the left side of the front panel.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-04-reference-01.png",
+    alt: "Reference image showing the FAES RTM label placement"
+  }],
     checks: [
       "One FAES RTM label is present"
     ]
@@ -70,7 +79,10 @@ const t8Steps = [
     instruction:
       "Inspect all stickers, labels and document holders. Record missing stickers and remove old stickers, labels and document holders.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-07-reference-01.png",
+    alt: "Reference image showing stickers, labels and document holders on the T-8"
+  }],
     checks: [
       "SA ISPM code checked",
       "SA non-clean handling stickers checked",
@@ -84,7 +96,14 @@ const t8Steps = [
     instruction:
       "Inspect the SA for loose or missing parts. Verify that the lid protection strips are present, green foam parts are securely attached and the interior is complete.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-08-reference-01.png",
+    alt: "Reference image showing the SA inspection points"
+  },
+  {
+    src: "assets/images/t8/step-08-reference-02.png",
+    alt: "Reference image showing the SA interior condition"
+  }],
     checks: [
       "No loose or missing SA parts found",
       "Lid protection strips are present",
@@ -107,7 +126,14 @@ const t8Steps = [
     instruction:
       "Inspect the TA exterior and interior. Verify that hardware and fittings are secure, the HPL layer is undamaged, foam parts are present and the interior is complete. Report an issue if a condition is not met.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-10-reference-01.png",
+    alt: "Reference image showing the TA exterior inspection points"
+  },
+  {
+    src: "assets/images/t8/step-10-reference-02.png",
+    alt: "Reference image showing the TA interior inspection points"
+  }],
     checks: [
       "Hardware and fittings are present and secure",
       "HPL layer is undamaged",
@@ -136,7 +162,21 @@ const t8Steps = [
       "Put on gloves before continuing. Inspect all four red poles. Rotate each pole counterclockwise using one hand. Each pole must rotate only a quarter turn.",
     warning:
       "Wear gloves before continuing with this step. Contamination must be avoided.",
-    images: [],
+    images:[ {src: "assets/images/t8/step-12-reference-01.png",
+    alt: "Reference image showing the red pole inspection area"
+  },
+  {
+    src: "assets/images/t8/step-12-reference-02.png",
+    alt: "Reference image showing coloured parts on the T-8"
+  },
+  {
+    src: "assets/images/t8/step-12-reference-03.png",
+    alt: "Reference image showing the required pole positions"
+  },
+  {
+    src: "assets/images/t8/step-12-reference-04.png",
+    alt: "Reference image showing the pole rotation check"
+  }],
     checks: [
       "Gloves worn",
       "All four red poles inspected",
@@ -154,7 +194,22 @@ const t8Steps = [
     instruction:
       "Check that all pillars are present and hand fastened. Verify that the pink and light-blue parts are fully threaded.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-12-reference-01.png",
+    alt: "Reference image showing the red pole inspection area"
+  },
+  {
+    src: "assets/images/t8/step-12-reference-02.png",
+    alt: "Reference image showing coloured parts on the T-8"
+  },
+  {
+    src: "assets/images/t8/step-12-reference-03.png",
+    alt: "Reference image showing the required pole positions"
+  },
+  {
+    src: "assets/images/t8/step-12-reference-04.png",
+    alt: "Reference image showing the pole rotation check"
+  }],
     checks: [
       "Dark blue pillar is present and hand fastened",
       "Green pillar is present and hand fastened",
@@ -169,7 +224,10 @@ const t8Steps = [
     instruction:
       "Check that all required parts are present and correctly mounted on the base plate. Verify that the required screws are present and properly installed.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-14-reference-01.png",
+    alt: "Reference image showing the T-8 base plate assembly"
+  }],
     checks: [
       "Yellow parts are present and mounted correctly",
       "Green part is present and mounted correctly"
@@ -180,7 +238,10 @@ const t8Steps = [
     instruction:
       "Place the cyan bracket on the base plate. Fasten it with two M4x20 screws and align it with one M4x12 dowel pin.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-14-reference-01.png",
+    alt: "Reference image showing the T-8 base plate assembly"
+  }],
     checks: [
       "Cyan bracket placed in the correct position",
       "Two M4x20 screws fastened",
@@ -192,7 +253,10 @@ const t8Steps = [
     instruction:
       "Place the green block on the base plate. Fasten it with four M5x30 screws and align it with one M4x12 dowel pin.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-16-reference-01.png",
+    alt: "Reference image showing the green block placement on the base plate"
+  }],
     checks: [
       "Green block placed in the correct position",
       "Four M5x30 screws fastened",
@@ -204,7 +268,18 @@ const t8Steps = [
     instruction:
       "Place seven green guide caps on the base plate in the correct positions.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-17-reference-01.png",
+    alt: "Reference image showing the first green guide cap position"
+  },
+  {
+    src: "assets/images/t8/step-17-reference-02.png",
+    alt: "Reference image showing the second green guide cap position"
+  },
+  {
+    src: "assets/images/t8/step-17-reference-03.png",
+    alt: "Reference image showing the complete green guide cap placement"
+  }],
     checks: [
       "Seven green guide caps placed in the correct positions"
     ]
@@ -227,7 +302,18 @@ const t8Steps = [
     instruction:
       "Place four purple guide caps on the base plate and fasten each one with an M3x16 screw.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-19-reference-01.png",
+    alt: "Reference image showing purple guide cap placement"
+  },
+  {
+    src: "assets/images/t8/step-19-reference-02.png",
+    alt: "Reference image showing the purple guide cap screw placement"
+  },
+  {
+    src: "assets/images/t8/step-19-reference-03.png",
+    alt: "Reference image showing the completed purple guide cap setup"
+  }],
     checks: [
       "Four purple guide caps placed in the correct positions",
       "Four M3x16 screws fastened"
@@ -249,7 +335,10 @@ const t8Steps = [
     instruction:
       "Check the pillars for dents and burrs. Mark exceptionally large dents and burrs with a red permanent marker.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-21-reference-01.png",
+    alt: "Reference image showing pillar surface inspection points"
+  }],
     checks: [
       "Pillars inspected for dents and burrs",
       "Large dents marked with a red marker when required",
@@ -261,7 +350,10 @@ const t8Steps = [
     instruction:
       "Compare the underside of the T-8 with the reference image. Confirm the count of each screw type.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-22-reference-01.png",
+    alt: "Reference image showing the underside screw count"
+  }],
     checks: [
       "Eight red M6x20 screws present",
       "Thirteen blue M5x12 screws present",
@@ -274,7 +366,10 @@ const t8Steps = [
     instruction:
       "Check that feet, pole mounting points and screws are present and hand tightened. Mark exceptionally large burrs with a red permanent marker. Return the T-8 to its original orientation.",
     warning: null,
-    images: [],
+    images: [  {
+    src: "assets/images/t8/step-23-reference-01.png",
+    alt: "Reference image showing the underside condition inspection points"
+  }],
     checks: [
       "All feet are present",
       "All pole mounts are present",
@@ -376,6 +471,10 @@ function renderChecks(checks) {
 }
 
 function renderWarning(warning) {
+    instructionStepLayout.classList.toggle(
+  "instruction-step-layout--has-warning",
+  Boolean(warning)
+);
   if (!warning) {
     instructionWarning.hidden = true;
     instructionWarning.innerHTML = "";
@@ -404,6 +503,10 @@ function renderImages(images) {
     instructionImagePanel.hidden = true;
     instructionStepLayout.classList.add("instruction-step-layout--no-images");
     instructionStepLayout.classList.remove("instruction-step-layout--with-images");
+    instructionImageList.classList.remove(
+      "instruction-image-list--single",
+      "instruction-image-list--multiple"
+    );
     return;
   }
 
@@ -411,12 +514,32 @@ function renderImages(images) {
   instructionStepLayout.classList.remove("instruction-step-layout--no-images");
   instructionStepLayout.classList.add("instruction-step-layout--with-images");
 
-  images.forEach((image) => {
+  instructionImageList.classList.remove(
+    "instruction-image-list--single",
+    "instruction-image-list--multiple"
+  );
+
+  if (images.length === 1) {
+    instructionImageList.classList.add("instruction-image-list--single");
+  } else {
+    instructionImageList.classList.add("instruction-image-list--multiple");
+  }
+
+  images.forEach((image, index) => {
+    const imageCard = document.createElement("figure");
+    imageCard.className = "instruction-image-card";
+
     const imageElement = document.createElement("img");
     imageElement.src = image.src;
-    imageElement.alt = image.alt;
+    imageElement.alt = image.alt || `Reference image ${index + 1}`;
 
-    instructionImageList.appendChild(imageElement);
+    const imageCaption = document.createElement("figcaption");
+    imageCaption.textContent = `Image ${index + 1}`;
+
+    imageCard.appendChild(imageElement);
+    imageCard.appendChild(imageCaption);
+
+    instructionImageList.appendChild(imageCard);
   });
 }
 
