@@ -19,7 +19,19 @@
 <body>
   <div class="app-shell">
 
-    <aside class="sidebar sidebar--expanded" aria-label="Primary navigation">
+    <aside class="sidebar" aria-label="Primary navigation">
+        <button
+            class="sidebar-collapse-button"
+            type="button"
+            aria-label="Close navigation"
+            aria-expanded="true"
+        >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M16 7L11 12L16 17"></path>
+                <path d="M8 7L3 12L8 17"></path>
+            </svg>
+        </button>
+        
         <div class="sidebar-brand">
             <img
                 src="assets/images/faes-logo.png"
@@ -32,17 +44,7 @@
                 <span>John Doe</span>
             </div>
 
-            <button
-                class="sidebar-collapse-button"
-                type="button"
-                aria-label="Close navigation"
-                aria-expanded="true"
-            >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M16 7L11 12L16 17"></path>
-                    <path d="M8 7L3 12L8 17"></path>
-                </svg>
-            </button>
+
         </div>
 
         <nav class="sidebar-navigation">

@@ -503,3 +503,21 @@ svg {
 .main-area {
   transition: margin-left 220ms ease, width 220ms ease;
 }
+
+.sidebar--expanded .sidebar-collapse-button {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+}
+
+.sidebar--expanded .sidebar-brand {
+  padding-right: 40px;
+}
+
+.sidebar:not(.sidebar--expanded) .sidebar-collapse-button svg {
+  transform: rotate(180deg);
+}
+
+.sidebar-collapse-button svg {
+  transition: transform 220ms ease;
+}
