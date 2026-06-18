@@ -1,0 +1,1 @@
+console.log("FAES Operator Platform loaded");
