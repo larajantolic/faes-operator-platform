@@ -112,9 +112,10 @@
             <span class="visually-hidden">Search product or instruction</span>
 
             <input
-              type="search"
-              placeholder="Search product or instruction..."
-              aria-label="Search product or instruction"
+                id="instruction-search"
+                type="search"
+                placeholder="Search product or instruction..."
+                aria-label="Search product or instruction"                
             >
 
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -196,6 +197,9 @@
                 </div>
             </article>
         </section>
+        <p class="search-empty-state" id="search-empty-state" hidden>
+            No instructions found. Try a different search term.
+        </p>
       </main>
     </div>
 

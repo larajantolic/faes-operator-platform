@@ -19,3 +19,38 @@ if (sidebar && sidebarToggleButton) {
 
   updateSidebarToggleState();
 }
+
+
+const instructionSearchInput = document.querySelector("#instruction-search");
+const instructionCards = [...document.querySelectorAll(".instruction-card")];
+const searchEmptyState = document.querySelector("#search-empty-state");
+
+function normaliseSearchText(text) {
+  return text.toLowerCase().trim();
+}
+
+function filterInstructions(searchTerm) {
+  const normalisedSearchTerm = normaliseSearchText(searchTerm);
+  let visibleCardCount = 0;
+
+  instructionCards.forEach((card) => {
+    const cardText = normaliseSearchText(card.textContent);
+    const matchesSearch = cardText.includes(normalisedSearchTerm);
+
+    card.hidden = !matchesSearch;
+
+    if (matchesSearch) {
+      visibleCardCount += 1;
+    }
+  });
+
+  if (searchEmptyState) {
+    searchEmptyState.hidden = visibleCardCount !== 0;
+  }
+}
+
+if (instructionSearchInput) {
+  instructionSearchInput.addEventListener("input", (event) => {
+    filterInstructions(event.target.value);
+  });
+}
