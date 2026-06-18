@@ -634,3 +634,150 @@ leaveInstructionDialog.addEventListener("click", (event) => {
 });
 
 renderStep();
+
+
+const reportStepIssueButton = document.querySelector(
+  "#report-step-issue-button"
+);
+
+const issueReportDialog = document.querySelector("#issue-report-dialog");
+
+const issueReportForm = document.querySelector("#issue-report-form");
+
+const cancelIssueReportButton = document.querySelector(
+  "#cancel-issue-report-button"
+);
+
+const issueReportTitleInput = document.querySelector(
+  "#issue-report-title"
+);
+
+const issueReportError = document.querySelector(
+  "#issue-report-error"
+);
+
+if (
+  reportStepIssueButton &&
+  issueReportDialog &&
+  issueReportForm &&
+  cancelIssueReportButton &&
+  issueReportTitleInput &&
+  issueReportError
+) {
+  reportStepIssueButton.addEventListener("click", () => {
+    issueReportForm.reset();
+    issueReportError.hidden = true;
+
+    issueReportDialog.showModal();
+
+    issueReportTitleInput.focus();
+  });
+
+  cancelIssueReportButton.addEventListener("click", () => {
+    issueReportDialog.close();
+  });
+
+  issueReportDialog.addEventListener("click", (event) => {
+    if (event.target === issueReportDialog) {
+      issueReportDialog.close();
+    }
+  });
+}
+
+const issueReportDescriptionInput = document.querySelector(
+  "#issue-report-description"
+);
+
+const issueReportToast = document.querySelector(
+  "#issue-report-toast"
+);
+
+let issueReportToastTimeout;
+
+const issueReportImageInput = document.querySelector(
+  "#issue-report-image"
+);
+
+function getSavedIssueReports() {
+  const savedReports = localStorage.getItem("faesIssueReports");
+
+  return savedReports ? JSON.parse(savedReports) : [];
+}
+
+function saveIssueReport(report) {
+  const reports = getSavedIssueReports();
+
+  reports.unshift(report);
+
+  localStorage.setItem("faesIssueReports", JSON.stringify(reports));
+}
+
+function showIssueReportToast() {
+  issueReportToast.hidden = false;
+
+  clearTimeout(issueReportToastTimeout);
+
+  issueReportToastTimeout = setTimeout(() => {
+    issueReportToast.hidden = true;
+  }, 3500);
+}
+
+if (
+  issueReportForm &&
+  issueReportDialog &&
+  issueReportTitleInput &&
+  issueReportDescriptionInput &&
+  issueReportError &&
+  issueReportToast
+) {
+  issueReportForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const issueTitle = issueReportTitleInput.value.trim();
+    const issueDescription = issueReportDescriptionInput.value.trim();
+
+    if (!issueTitle || !issueDescription) {
+      issueReportError.hidden = false;
+      return;
+    }
+
+    issueReportError.hidden = true;
+
+    const selectedImage = issueReportImageInput?.files?.[0] || null;
+
+    const report = {
+      id: crypto.randomUUID(),
+      title: issueTitle,
+      description: issueDescription,
+      imageName: selectedImage ? selectedImage.name : null,
+      instructionName: "T-8 Repair Triage",
+      stepNumber: currentStepIndex + 1,
+      stepTitle: t8Steps[currentStepIndex].title,
+      status: "Waiting for review",
+      createdAt: new Date().toISOString()
+    };
+
+    saveIssueReport(report);
+
+    issueReportDialog.close();
+    showIssueReportToast();
+  });
+}
+
+if (issueReportImageInput) {
+  issueReportImageInput.addEventListener("change", () => {
+    const selectedImage = issueReportImageInput.files?.[0];
+
+    if (!selectedImage) {
+      return;
+    }
+
+    const issueReportUploadText = document.querySelector(
+      "#issue-report-upload-text"
+    );
+
+    if (issueReportUploadText) {
+      issueReportUploadText.textContent = selectedImage.name;
+    }
+  });
+}
