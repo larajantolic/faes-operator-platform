@@ -335,3 +335,189 @@ svg {
     font-size: 15px;
   }
 }
+
+.sidebar {
+  transition: width 220ms ease;
+}
+
+.sidebar--expanded {
+  width: 228px;
+  align-items: stretch;
+  padding: 14px 10px 18px;
+}
+
+.sidebar--expanded + .main-area {
+  width: calc(100% - 228px);
+  margin-left: 228px;
+  transition: margin-left 220ms ease, width 220ms ease;
+}
+
+.sidebar-brand {
+  display: none;
+}
+
+.sidebar--expanded .sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 8px;
+}
+
+.sidebar-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.sidebar-user {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1px;
+}
+
+.sidebar-user strong {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sidebar-user span {
+  color: #9ba1a7;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.sidebar--expanded .sidebar-collapse-button {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 5px;
+  color: #73787d;
+}
+
+.sidebar--expanded .sidebar-collapse-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.sidebar--expanded .sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 36px;
+  margin-top: 32px;
+}
+
+
+.sidebar--expanded .sidebar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar--expanded .sidebar-section-label {
+  display: block;
+  padding: 0 10px;
+
+  color: #a4a9af;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.sidebar--expanded .sidebar-link {
+  width: 100%;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+
+  padding: 0 10px;
+  border-radius: 7px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.sidebar--expanded .sidebar-link svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+
+.sidebar--expanded .sidebar-link span {
+  white-space: nowrap;
+}
+
+.sidebar--expanded .sidebar-link--active {
+  margin-top: 0;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.sidebar-section-label {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+.sidebar--expanded .sidebar-link span {
+  white-space: nowrap;
+}
+
+.sidebar--expanded .sidebar-link svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+
+.sidebar--expanded .sidebar-link span {
+  display: inline;
+}
+
+
+
+.sidebar--expanded .sidebar-link--logout {
+  margin: auto 0 0;
+}
+
+.sidebar:not(.sidebar--expanded) .sidebar-link span,
+.sidebar:not(.sidebar--expanded) .sidebar-brand,
+.sidebar:not(.sidebar--expanded) .sidebar-section-label {
+  display: none;
+}
+
+.main-area {
+  transition: margin-left 220ms ease, width 220ms ease;
+}
+
+.sidebar--expanded .sidebar-collapse-button {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+}
+
+.sidebar--expanded .sidebar-brand {
+  padding-right: 40px;
+}
+
+.sidebar:not(.sidebar--expanded) .sidebar-collapse-button svg {
+  transform: rotate(180deg);
+}
+
+.sidebar-collapse-button svg {
+  transition: transform 220ms ease;
+}
