@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Reports | FAES Operator Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <aside class="sidebar" aria-label="Primary navigation">
+        <button
+            class="sidebar-collapse-button"
+            type="button"
+            aria-label="Close navigation"
+            aria-expanded="true"
+        >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M16 7L11 12L16 17"></path>
+                <path d="M8 7L3 12L8 17"></path>
+            </svg>
+        </button>
+        
+        <div class="sidebar-brand">
+            <img
+                src="assets/images/faes-logo.png"
+                alt="FAES logo"
+                class="sidebar-logo"
+            >
+
+            <div class="sidebar-user">
+                <strong>FAES</strong>
+                <span>John Doe</span>
+            </div>
+
+
+        </div>
+
+        <nav class="sidebar-navigation">
+            <div class="sidebar-group">
+                <span class="sidebar-section-label">OVERVIEW</span>
+
+                <a class="sidebar-link" href="index.html">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 3H14L19 8V20C19 20.55 18.55 21 18 21H7C6.45 21 6 20.55 6 20V4C6 3.45 6.45 3 7 3Z"></path>
+                        <path d="M14 3V8H19"></path>
+                        <path d="M9 12H16"></path>
+                        <path d="M9 16H16"></path>
+                    </svg>
+
+                    <span>Instruction Library</span>
+                </a>
+            </div>
+
+            <div class="sidebar-group">
+                <span class="sidebar-section-label">REPORTS</span>
+
+                <a class="sidebar-link sidebar-link--active" href="reports.html">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 4V20"></path>
+                        <path d="M5 5H16L14 10L18 15H5"></path>
+                    </svg>
+
+                    <span>My Reports</span>
+                </a>
+            </div>
+
+            <div class="sidebar-group">
+                <span class="sidebar-section-label">SETTINGS</span>
+
+                <a class="sidebar-link" href="#">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            fill="currentColor"
+                            stroke="none"
+                            d="M19.14 12.94c.04-.31.06-.62.06-.94s-.02-.63-.07-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a7.2 7.2 0 0 0-1.62-.94L14.5 2.81A.5.5 0 0 0 14 2.4h-4a.5.5 0 0 0-.5.41L9.14 5.35c-.58.24-1.12.55-1.62.94l-2.39-.96a.5.5 0 0 0-.61.22L2.6 8.87a.5.5 0 0 0 .12.64l2.03 1.58c-.05.31-.08.63-.08.95s.03.64.08.95L2.72 14.57a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .61.22l2.39-.96c.5.39 1.04.7 1.62.94l.36 2.54c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.36-2.54c.58-.24 1.12-.55 1.62-.94l2.39.96a.5.5 0 0 0 .61-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.57ZM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5Z"
+                        />
+                    </svg>
+
+
+                    <span>Settings</span>
+                </a>
+            </div>
+        </nav>
+
+        <a class="sidebar-link sidebar-link--logout" href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 8L18 12L14 16"></path>
+                <path d="M18 12H7"></path>
+                <path d="M10 4H5C4.45 4 4 4.45 4 5V19C4 19.55 4.45 20 5 20H10"></path>
+            </svg>
+
+            <span>Log out</span>
+        </a>
+    </aside>
+
+    <div class="main-area">
+      <header class="top-header">
+        <h1>My Reports</h1>
+      </header>
+
+        <main class="reports-page">
+            <section class="reports-filters" aria-label="Filter reports by status">
+                <button
+                    class="report-filter report-filter--resolved"
+                    type="button"
+                    data-status-filter="Resolved"
+                >
+                    Resolved
+                    <span aria-hidden="true">×</span>
+                </button>
+
+                <button
+                    class="report-filter report-filter--review"
+                    type="button"
+                    data-status-filter="In review"
+                >
+                    In review
+                    <span aria-hidden="true">×</span>
+                </button>
+
+                <button
+                    class="report-filter report-filter--waiting"
+                    type="button"
+                    data-status-filter="Waiting for review"
+                >
+                    Waiting for review
+                    <span aria-hidden="true">×</span>
+                </button>
+            </section>
+
+
+            <section
+                class="reports-grid"
+                id="reports-grid"
+                aria-live="polite"
+            ></section>
+
+            <section
+                class="reports-empty-state"
+                id="reports-empty-state"
+                hidden
+            >
+                <div class="reports-empty-state__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 3V21"></path>
+                    <path d="M6 4H17L15 9L19 14H6"></path>
+                </svg>
+                </div>
+
+                <h2>No reports yet</h2>
+
+                <p>
+                Reports you submit from an instruction will appear here.
+                </p>
+
+                <a class="reports-empty-state__button" href="index.html">
+                Go to Instruction Library
+                </a>
+            </section>
+        </main>
+    </div>
+
+  </div>
+
+ 
+
+
+
+  <script src="js/reports.js"></script>
+</body>
+</html>
