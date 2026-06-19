@@ -781,3 +781,335 @@ if (issueReportImageInput) {
     }
   });
 }
+
+/* ========================================
+   PRODUCT DOCUMENTATION
+======================================== */
+
+const documentProductButton = document.querySelector(
+  "#document-product-button"
+);
+
+const productDocumentationDialog = document.querySelector(
+  "#product-documentation-dialog"
+);
+
+const productDocumentationForm = document.querySelector(
+  "#product-documentation-form"
+);
+
+const documentationPackageCode = document.querySelector(
+  "#documentation-package-code"
+);
+
+const productDocumentationImageInput = document.querySelector(
+  "#product-documentation-image"
+);
+
+const productDocumentationImagePreviews = document.querySelector(
+  "#product-documentation-image-previews"
+);
+
+const productDocumentationUploadPlaceholder = document.querySelector(
+  "#product-documentation-upload-placeholder"
+);
+
+const productDocumentationNotes = document.querySelector(
+  "#product-documentation-notes"
+);
+
+const productDamageYes = document.querySelector("#product-damage-yes");
+const productDamageNo = document.querySelector("#product-damage-no");
+
+const productDamageDescriptionField = document.querySelector(
+  "#product-damage-description-field"
+);
+
+const productDamageDescription = document.querySelector(
+  "#product-damage-description"
+);
+
+const productDocumentationError = document.querySelector(
+  "#product-documentation-error"
+);
+
+const cancelProductDocumentationButton = document.querySelector(
+  "#cancel-product-documentation-button"
+);
+
+const productDocumentationToast = document.querySelector(
+  "#product-documentation-toast"
+);
+
+const PRODUCT_DOCUMENTATION_STORAGE_KEY = "faesProductDocumentation";
+
+let productDocumentationImageDataUrls = [];
+let productDocumentationToastTimeout;
+
+function getSavedProductDocumentation() {
+  try {
+    const savedDocumentation = sessionStorage.getItem(
+      PRODUCT_DOCUMENTATION_STORAGE_KEY
+    );
+
+    return savedDocumentation ? JSON.parse(savedDocumentation) : null;
+  } catch (error) {
+    console.error("Could not load product documentation.", error);
+    return null;
+  }
+}
+
+function saveProductDocumentation(documentation) {
+  sessionStorage.setItem(
+    PRODUCT_DOCUMENTATION_STORAGE_KEY,
+    JSON.stringify(documentation)
+  );
+}
+
+function clearSavedProductDocumentation() {
+  sessionStorage.removeItem(PRODUCT_DOCUMENTATION_STORAGE_KEY);
+}
+
+function updateDamageDescriptionVisibility() {
+  const hasDamage = productDamageYes.checked;
+
+  productDamageDescriptionField.hidden = !hasDamage;
+
+  if (!hasDamage) {
+    productDamageDescription.value = "";
+  }
+}
+
+function renderProductDocumentationPreviews() {
+  productDocumentationImagePreviews.innerHTML = "";
+
+  if (productDocumentationImageDataUrls.length === 0) {
+    productDocumentationImagePreviews.hidden = true;
+    productDocumentationUploadPlaceholder.hidden = false;
+    return;
+  }
+
+  productDocumentationImageDataUrls.forEach((imageDataUrl, index) => {
+    const image = document.createElement("img");
+
+    image.src = imageDataUrl;
+    image.alt = `Product documentation image ${index + 1}`;
+
+    productDocumentationImagePreviews.appendChild(image);
+  });
+
+  productDocumentationImagePreviews.hidden = false;
+  productDocumentationUploadPlaceholder.hidden = true;
+}
+
+function resetProductDocumentationForm() {
+  productDocumentationForm.reset();
+
+  productDocumentationImageDataUrls = [];
+
+  productDocumentationError.hidden = true;
+
+  productDamageDescriptionField.hidden = true;
+
+  renderProductDocumentationPreviews();
+}
+
+function populateProductDocumentationForm() {
+  const savedDocumentation = getSavedProductDocumentation();
+
+  resetProductDocumentationForm();
+
+  if (!savedDocumentation) {
+    return;
+  }
+
+  productDocumentationImageDataUrls =
+    savedDocumentation.imageDataUrls || [];
+
+  productDocumentationNotes.value = savedDocumentation.notes || "";
+
+  if (savedDocumentation.damage === "yes") {
+    productDamageYes.checked = true;
+    productDamageDescription.value =
+      savedDocumentation.damageDescription || "";
+  }
+
+  if (savedDocumentation.damage === "no") {
+    productDamageNo.checked = true;
+  }
+
+  updateDamageDescriptionVisibility();
+  renderProductDocumentationPreviews();
+}
+
+function showProductDocumentationToast() {
+  productDocumentationToast.hidden = false;
+
+  clearTimeout(productDocumentationToastTimeout);
+
+  productDocumentationToastTimeout = setTimeout(() => {
+    productDocumentationToast.hidden = true;
+  }, 3500);
+}
+
+function readImageFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      resolve(reader.result);
+    });
+
+    reader.addEventListener("error", () => {
+      reject(new Error(`Could not read ${file.name}`));
+    });
+
+    reader.readAsDataURL(file);
+  });
+}
+
+if (
+  documentProductButton &&
+  productDocumentationDialog &&
+  productDocumentationForm &&
+  documentationPackageCode &&
+  productDocumentationImageInput &&
+  productDocumentationImagePreviews &&
+  productDocumentationUploadPlaceholder &&
+  productDocumentationNotes &&
+  productDamageYes &&
+  productDamageNo &&
+  productDamageDescriptionField &&
+  productDamageDescription &&
+  productDocumentationError &&
+  cancelProductDocumentationButton &&
+  productDocumentationToast
+) {
+  documentProductButton.addEventListener("click", () => {
+    const activePackageCode =
+      sessionStorage.getItem("activePackageCode") || "—";
+
+    documentationPackageCode.textContent = activePackageCode;
+
+    populateProductDocumentationForm();
+
+    productDocumentationDialog.showModal();
+  });
+
+  productDamageYes.addEventListener(
+    "change",
+    updateDamageDescriptionVisibility
+  );
+
+  productDamageNo.addEventListener(
+    "change",
+    updateDamageDescriptionVisibility
+  );
+
+  productDocumentationImageInput.addEventListener("change", async () => {
+    const selectedImages = Array.from(
+      productDocumentationImageInput.files || []
+    );
+
+    if (selectedImages.length === 0) {
+      return;
+    }
+
+    try {
+      const newImageDataUrls = await Promise.all(
+        selectedImages.map((image) => readImageFile(image))
+      );
+
+      productDocumentationImageDataUrls = [
+        ...productDocumentationImageDataUrls,
+        ...newImageDataUrls
+      ];
+
+      renderProductDocumentationPreviews();
+
+      /*
+        Clears the native file input so the operator can select
+        more images afterwards, including the same file again.
+      */
+      productDocumentationImageInput.value = "";
+    } catch (error) {
+      console.error("Could not load selected product images.", error);
+    }
+  });
+
+  cancelProductDocumentationButton.addEventListener("click", () => {
+    /*
+      Restores the last saved version.
+      If nothing was saved yet, this simply clears temporary input.
+    */
+    populateProductDocumentationForm();
+    productDocumentationDialog.close();
+  });
+
+  productDocumentationDialog.addEventListener("cancel", (event) => {
+    event.preventDefault();
+
+    populateProductDocumentationForm();
+    productDocumentationDialog.close();
+  });
+
+  productDocumentationDialog.addEventListener("click", (event) => {
+    if (event.target === productDocumentationDialog) {
+      populateProductDocumentationForm();
+      productDocumentationDialog.close();
+    }
+  });
+
+  productDocumentationForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const damage = productDamageYes.checked
+      ? "yes"
+      : productDamageNo.checked
+        ? "no"
+        : null;
+
+    const damageDescription = productDamageDescription.value.trim();
+
+    const isDamageDescriptionMissing =
+      damage === "yes" && !damageDescription;
+
+    if (
+      productDocumentationImageDataUrls.length === 0 ||
+      !damage ||
+      isDamageDescriptionMissing
+    ) {
+      productDocumentationError.hidden = false;
+      return;
+    }
+
+    productDocumentationError.hidden = true;
+
+    saveProductDocumentation({
+      packageCode:
+        sessionStorage.getItem("activePackageCode") || "—",
+      imageDataUrls: productDocumentationImageDataUrls,
+      notes: productDocumentationNotes.value.trim(),
+      damage,
+      damageDescription: damage === "yes" ? damageDescription : ""
+    });
+
+    productDocumentationDialog.close();
+    showProductDocumentationToast();
+  });
+}
+
+/* Delete documentation only after confirming that the instruction is being left */
+
+const confirmLeaveInstructionButtonForDocumentation = document.querySelector(
+  "#confirm-leave-instruction-button"
+);
+
+if (confirmLeaveInstructionButtonForDocumentation) {
+  confirmLeaveInstructionButtonForDocumentation.addEventListener(
+    "click",
+    () => {
+      clearSavedProductDocumentation();
+    }
+  );
+}
