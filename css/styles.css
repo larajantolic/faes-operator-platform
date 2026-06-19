@@ -2354,3 +2354,53 @@ body.instruction-page {
     grid-template-columns: 1fr;
   }
 }
+
+/* ========================================
+   INSTRUCTION CARD STATES
+======================================== */
+
+.instruction-card {
+  position: relative;
+}
+
+.instruction-card--disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+}
+
+.instruction-card--disabled:hover {
+  transform: none;
+  box-shadow: var(--shadow);
+}
+
+.instruction-card--disabled .instruction-card__image,
+.instruction-card--disabled .instruction-card__content {
+  pointer-events: none;
+}
+
+.instruction-card__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  background-color: #f0f1f2;
+  color: #6f757b;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ========================================
+   ACTIVE INSTRUCTION CARD HOVER
+======================================== */
+
+.instruction-card:not(.instruction-card--disabled):hover {
+  border-color: #ffd0ad;
+  box-shadow: 0 10px 22px rgba(255, 142, 61, 0.16);
+  transform: translateY(-2px);
+}
